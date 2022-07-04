@@ -1,5 +1,7 @@
 package pro.sky;
 
+import java.util.Objects;
+
 public class Book {
 
     private final String name;
@@ -26,6 +28,19 @@ public class Book {
 
     public void setPublicationYear(int publicationYear) {
         this.publicationYear = publicationYear;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Book book = (Book) o;
+        return publicationYear == book.publicationYear && name.equals(book.name) && author.equals(book.author);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, author, publicationYear);
     }
 
     @Override
